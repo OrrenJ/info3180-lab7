@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div ng-app="myViewer" ng-controller="myCtrl">
+	
+	<h1 class="page-header">Thumbnail Viewer</h1>
+
+	<div ng-if="response.thumbnails.length == 0">
+		<p>Oops! Looks like something went wrong.</p>
+		<h1>:(</h1>
+	</div>
+
+	<div ng-repeat="img in response.thumbnails track by $index" ng-if="$index % 3 == 0" class="row">
+	    <div class="col-xs-4"><img src='//response.thumbnails[$index]//'/></div>
+	    <div class="col-xs-4" ng-if="response.thumbnails.length > ($index + 1)"><img src='//response.thumbnails[$index + 1]//'/></div>
+	    <div class="col-xs-4" ng-if="response.thumbnails.length > ($index + 2)"><img src='//response.thumbnails[$index + 2]//'/></div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+	<script src="/static/js/angular.min.js"></script>
+	<script src="/static/js/app.js"></script>
+{% endblock %}

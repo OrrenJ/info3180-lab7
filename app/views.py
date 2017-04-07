@@ -36,6 +36,16 @@ def api_thumbnails():
                 }
     return json.dumps(output, indent=4, sort_keys=True)
 
+
+###
+# Exercise 3
+###
+
+@app.route('/thumbnails/view')
+def view_thumbnails():
+
+    return render_template('view_thumbnails.html')
+
 ###
 # The functions below should be applicable to all Flask apps.
 ###
